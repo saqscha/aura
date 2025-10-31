@@ -1,75 +1,318 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap");
+/* === APPLE LAVENDER UI === */
 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
+
+/* === ROOT VARIABLES === */
 :root {
+  --accent: #8a7cff;
+  --accent-light: #c9c3ff;
+  --text-dark: #111;
+  --text-light: #666;
+  --bg-top: #faf9ff;
+  --bg-mid: #f3f1ff;
+  --bg-bottom: #ffffff;
   --radius: 30px;
-  --glass-bg: rgba(255, 255, 255, 0.35);
-  --shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 }
 
+/* === GLOBAL === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-tap-highlight-color: transparent;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
+  transition: all 0.6s cubic-bezier(.4, 0, .2, 1);
 }
 
-html, body {
-  height: 100%;
+body {
+  min-height: 100vh;
+  background: linear-gradient(145deg, var(--bg-top) 0%, var(--bg-mid) 60%, var(--bg-bottom) 100%);
+  background-attachment: fixed;
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* === NAVBAR === */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  overflow: hidden;
-  background: radial-gradient(circle at 20% 40%, #f5f7ff 0%, #eaf2ff 60%, #ffffff 100%);
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  background: rgba(255,255,255,0.45);
+  border-bottom: 0.5px solid rgba(255,255,255,0.3);
+  z-index: 10;
+}
+
+.logo {
+  font-family: "SF Pro Display", "Poppins", -apple-system, sans-serif;
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: -0.5px;
+  background: linear-gradient(100deg, #a48bff, #7b61ff, #9d84ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(155,130,255,0.15);
+  transition: transform 0.4s ease, text-shadow 0.4s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 50px rgba(155,130,255,0.3);
+}
+
+
+.menu-btn {
+  font-size: 26px;
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+/* === MOBILE MENU === */
+.mobile-nav {
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 20px;
+  display: none;
+  flex-direction: column;
+  padding: 15px;
+  box-shadow: 0 8px 30px rgba(138,124,255,0.1);
+  z-index: 9;
+}
+
+.mobile-nav a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 400;
+  padding: 10px 20px;
+  border-radius: 12px;
+}
+
+.mobile-nav a:hover {
+  background: rgba(138,124,255,0.08);
+}
+
+/* === HERO SECTION === */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  animation: drift 18s ease-in-out infinite alternate;
+  text-align: center;
+  padding: 0 30px;
 }
 
-@keyframes drift {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+.hero h1 {
+  font-size: 54px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, var(--accent-light), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+
+.hero p {
+  color: var(--text-light);
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+.btn {
+  text-decoration: none;
+  background: linear-gradient(90deg, var(--accent-light), var(--accent));
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(138,124,255,0.25);
+  font-weight: 500;
+}
+
+.btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 35px rgba(138,124,255,0.35);
+}
+
+/* === FEATURE CARDS === */
+.features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+  padding: 80px 20px;
 }
 
 .card {
-  backdrop-filter: blur(25px) saturate(160%);
-  -webkit-backdrop-filter: blur(25px) saturate(160%);
-  background-color: var(--glass-bg);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  background: rgba(255,255,255,0.25);
+  border: 0.5px solid rgba(255,255,255,0.4);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 60px 80px;
+  box-shadow: 0 10px 30px rgba(138,124,255,0.08);
+  padding: 40px;
   text-align: center;
-  transition: all 0.4s ease;
+}
+
+.card h2 {
+  font-size: 22px;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 15px;
+  color: var(--text-light);
 }
 
 .card:hover {
-  transform: scale(1.02);
-  background-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 45px rgba(138,124,255,0.15);
 }
 
-h1 {
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 80px 0 40px;
+  font-size: 14px;
+  color: #9a9ab0;
+}
+
+/* === RESPONSIVE === */
+@media (min-width: 700px) {
+  .features {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 120px 80px;
+  }
+
+  .hero h1 {
+    font-size: 64px;
+  }
+}
+/* === INTRO ANIMATION === */
+.intro {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(145deg,#faf9ff 0%,#f3f1ff 60%,#ffffff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  overflow: hidden;
+  animation: fadeOut 2s ease 2.5s forwards;
+}
+
+.intro-logo {
+  font-family: "Poppins","SF Pro Display",sans-serif;
   font-size: 48px;
-  color: #111;
-  font-weight: 500;
-  letter-spacing: -0.5px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg,#a48bff,#7b61ff,#c9c3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  opacity: 0;
+  animation: logoFadeIn 1.4s ease forwards;
 }
 
-p {
-  margin-top: 10px;
-  font-size: 17px;
-  color: #555;
-  letter-spacing: 0.2px;
+/* === INTRO ANIMATION (FINAL FIX) === */
+.intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #f8f7ff 0%, #f3f1ff 60%, #ffffff 100%);
+  z-index: 9999;
+  overflow: hidden;
+  opacity: 1;
+  animation: introFadeOut 2s ease 3s forwards;
 }
 
-/* iPhone optimization */
-@media (max-width: 600px) {
-  .card {
-    padding: 40px 45px;
-    border-radius: 25px;
+.intro-logo {
+  font-family: "Poppins", "SF Pro Display", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #a48bff, #7b61ff, #c9c3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: logoReveal 1.8s cubic-bezier(.4, 0, .2, 1) forwards;
+}
+
+/* shiny reflection */
+.intro-logo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shine 1.4s ease 0.8s forwards;
+}
+
+@keyframes logoReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    filter: blur(8px);
   }
-  h1 {
-    font-size: 38px;
+  50% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
   }
-  p {
-    font-size: 15px;
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
+
+@keyframes shine {
+  0% { left: -75%; }
+  100% { left: 125%; }
+}
+
+@keyframes introFadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+/* === PAGE FADE-IN EFFECT === */
+body {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: pageFadeIn 1.6s cubic-bezier(.4, 0, .2, 1) 2.4s forwards;
+}
+
+@keyframes pageFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+

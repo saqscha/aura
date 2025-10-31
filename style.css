@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap");
+
+:root {
+  --radius: 30px;
+  --glass-bg: rgba(255, 255, 255, 0.35);
+  --shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: radial-gradient(circle at 20% 40%, #f5f7ff 0%, #eaf2ff 60%, #ffffff 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.card {
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(25px) saturate(160%);
+  background-color: var(--glass-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 60px 80px;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  background-color: rgba(255, 255, 255, 0.45);
+}
+
+h1 {
+  font-size: 48px;
+  color: #111;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+
+p {
+  margin-top: 10px;
+  font-size: 17px;
+  color: #555;
+  letter-spacing: 0.2px;
+}
+
+/* iPhone optimization */
+@media (max-width: 600px) {
+  .card {
+    padding: 40px 45px;
+    border-radius: 25px;
+  }
+  h1 {
+    font-size: 38px;
+  }
+  p {
+    font-size: 15px;
+  }
+}
